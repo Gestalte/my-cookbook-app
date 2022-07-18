@@ -2,15 +2,87 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyCookbookApp.Pages.CategoriesPage"
-             Title="CategoriesPage">
-    <VerticalStackLayout>
-        
-        <Label 
-            Text="Categories Page"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="Categories">
 
-        <Button Text="Recipes" x:Name="RecipeButton"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-    </VerticalStackLayout>
+        <ScrollView Grid.Column="0" Grid.Row="0">
+
+            <CollectionView 
+                ItemsSource="{Binding Categories}"
+                BackgroundColor="Pink">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                            Orientation="Vertical"
+                            Span="2"
+                            HorizontalItemSpacing="6"
+                            VerticalItemSpacing="6"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid
+                            RowSpacing="0" 
+                            RowDefinitions="Auto, 25">
+
+                            <Border>
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="0" />
+                                </Border.StrokeShape>
+                                
+                                <Image                                    
+                                    Grid.Row="0"
+                                    Source="{Binding ImageUrl}"
+                                    MinimumHeightRequest="150"
+                                    MinimumWidthRequest="150"                                    
+                                    Aspect="AspectFit"
+                                    HorizontalOptions="Center"/>
+                            </Border>
+
+                            <Border Grid.Row="1">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="0" />
+                                </Border.StrokeShape>
+                                
+                                <Label
+                                    Text="{Binding Name}"
+                                    BackgroundColor="DeepPink"
+                                    HorizontalTextAlignment="Center"/>
+
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </ScrollView>
+
+        <Button 
+            x:Name="fab"
+            Grid.Column="0" 
+            Grid.Row="0"
+            VerticalOptions="End" 
+            HorizontalOptions="End" 
+            Margin="20" 
+            CornerRadius="50" 
+            Text="+" 
+            BackgroundColor="HotPink" 
+            TextColor="White" 
+            HeightRequest="50" 
+            WidthRequest="50"
+            FontSize="Large"
+            FontAttributes="Bold"/>
+
+    </Grid>
+
+
 </ContentPage>
