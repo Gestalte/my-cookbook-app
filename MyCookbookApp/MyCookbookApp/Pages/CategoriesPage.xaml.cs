@@ -12,6 +12,7 @@ public partial class CategoriesPage : ContentPage
         BindingContext = new CategoriesViewModel();
 
         //RecipeButton.Clicked += async (s, e) => await Shell.Current.GoToAsync("recipespage?categoryId=Recipes");
-        fab.Clicked += async (s, e) => await Shell.Current.GoToAsync("categoryeditpage");
+
+        fab.Clicked += async (s, e) => await Shell.Current.GoToAsync(nameof(CategoryEditPage));
     }
 }
