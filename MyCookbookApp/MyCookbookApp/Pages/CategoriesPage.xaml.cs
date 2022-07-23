@@ -11,8 +11,15 @@ public partial class CategoriesPage : ContentPage
         InitializeComponent();
         BindingContext = new CategoriesViewModel();
 
-        //RecipeButton.Clicked += async (s, e) => await Shell.Current.GoToAsync("recipespage?categoryId=Recipes");
-
         fab.Clicked += async (s, e) => await Shell.Current.GoToAsync(nameof(CategoryEditPage));
+    }
+
+    void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        var current = (e.CurrentSelection.FirstOrDefault() as Category).Name;
+
+        var page  = nameof(RecipesPage)+ "?categoryId="+ current;
+
+        Shell.Current.GoToAsync(page);
     }
 }

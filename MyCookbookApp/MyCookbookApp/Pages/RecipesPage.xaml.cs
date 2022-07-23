@@ -8,7 +8,7 @@ public partial class RecipesPage : ContentPage
     {
         InitializeComponent();
 
-        RecipeButton.Clicked += async (s, e) => await Shell.Current.GoToAsync("recipepage?recipeId=Recipe");
+        RecipeButton.Clicked += async (s, e) => await Shell.Current.GoToAsync(nameof(RecipePage) + "?recipeId=Recipe");
     }
 
     private string categoryId;

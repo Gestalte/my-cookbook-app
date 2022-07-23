@@ -16,6 +16,8 @@
 
             <CollectionView 
                 ItemsSource="{Binding Categories}"
+                SelectionMode="Single"
+                SelectionChanged="OnCollectionViewSelectionChanged"
                 BackgroundColor="White">
 
                 <CollectionView.EmptyView>
