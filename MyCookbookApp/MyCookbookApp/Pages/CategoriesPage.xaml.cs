@@ -6,6 +6,8 @@ namespace MyCookbookApp.Pages;
 
 public partial class CategoriesPage : ContentPage
 {
+    // TODO: Add a way to edit an existing Category
+
     public CategoriesPage()
     {
         InitializeComponent();

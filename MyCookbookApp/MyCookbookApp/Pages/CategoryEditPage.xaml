@@ -4,9 +4,6 @@
              x:Class="MyCookbookApp.Pages.CategoryEditPage"
              Title="CategoryEditPage">
     <VerticalStackLayout>
-        <Label 
-            Text="Category Edit Page"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Entry x:Name="lblCategoryName" Placeholder="Category Name"/>
     </VerticalStackLayout>
 </ContentPage>
