@@ -2,14 +2,95 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyCookbookApp.Pages.RecipesPage"
-             Title="RecipesPage">
-    <VerticalStackLayout>
-        <Label 
-            x:Name="lblDisplay"
-            Text="Recipes Page"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="Recipes">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-        <Button x:Name="RecipeButton" Text="Recipe"/>
-    </VerticalStackLayout>
+        <ScrollView Grid.Column="0" Grid.Row="0">
+
+            <CollectionView 
+                ItemsSource="{Binding Recipes}"
+                SelectionMode="Single"
+                SelectionChanged="OnCollectionViewSelectionChanged"
+                BackgroundColor="White">
+
+                <CollectionView.EmptyView>
+                    <Grid 
+                        RowDefinitions="*,*,*" 
+                        ColumnDefinitions="*,*,*">
+                        <Label
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            TextColor="Black" 
+                            FontAttributes="Bold" 
+                            HorizontalTextAlignment="Center" 
+                            VerticalTextAlignment="Center"                             
+                            Text="No Categories"
+                            FontSize="Header"/>
+                    </Grid>
+
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Vertical"
+                        Span="2"
+                        HorizontalItemSpacing="6"
+                        VerticalItemSpacing="6"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            RowSpacing="0" 
+                            RowDefinitions="Auto, 25">
+                            <Frame BorderColor="Black" BackgroundColor="White">
+                                <VerticalStackLayout>
+                                    <Image                                    
+                                        Grid.Row="0"
+                                        Source="{Binding ImageUrl}"
+                                        MinimumHeightRequest="150"
+                                        MinimumWidthRequest="150"                                    
+                                        Aspect="AspectFit"
+                                        HorizontalOptions="Center"/>
+
+                                    <Label
+                                        Text="{Binding Name}"
+                                        TextColor="Black"
+                                        HorizontalTextAlignment="Center"
+                                        Margin="0,10,0,0"
+                                        Padding="5"
+                                        FontAttributes="Bold"/>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </ScrollView>
+
+        <Button 
+            x:Name="fab"
+            Grid.Column="0" 
+            Grid.Row="0"
+            VerticalOptions="End" 
+            HorizontalOptions="End" 
+            Margin="20" 
+            CornerRadius="50" 
+            Text="+"
+            BackgroundColor="HotPink" 
+            TextColor="White" 
+            HeightRequest="50" 
+            WidthRequest="50"
+            FontSize="Large"
+            FontAttributes="Bold"/>
+
+    </Grid>
 </ContentPage>

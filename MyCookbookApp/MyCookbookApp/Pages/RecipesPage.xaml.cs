@@ -1,3 +1,6 @@
+using MyCookbookApp.Models;
+using MyCookbookApp.ViewModels;
+
 namespace MyCookbookApp.Pages;
 
 [QueryProperty(nameof(CategoryId), "categoryId")]
@@ -7,8 +10,9 @@ public partial class RecipesPage : ContentPage
     public RecipesPage()
     {
         InitializeComponent();
+        BindingContext = new RecipesViewModel();
 
-        RecipeButton.Clicked += async (s, e) => await Shell.Current.GoToAsync(nameof(RecipePage) + "?recipeId=Recipe");
+        fab.Clicked += async (s, e) => await Shell.Current.GoToAsync(nameof(RecipeEditPage));
     }
 
     private string categoryId;
@@ -18,7 +22,13 @@ public partial class RecipesPage : ContentPage
         set
         {
             categoryId = value;
-            lblDisplay.Text = categoryId;
         }
+    }
+
+    void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        var current = (e.CurrentSelection.FirstOrDefault() as Recipe).Name;
+
+        Shell.Current.GoToAsync(nameof(RecipePage) + "?recipeId=" + current);
     }
 }
