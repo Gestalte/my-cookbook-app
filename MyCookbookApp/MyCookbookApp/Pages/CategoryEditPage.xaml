@@ -5,5 +5,6 @@
              Title="CategoryEditPage">
     <VerticalStackLayout>
         <Entry x:Name="lblCategoryName" Placeholder="Category Name"/>
+        <Button x:Name="btnSave" Text="Save"/>
     </VerticalStackLayout>
 </ContentPage>

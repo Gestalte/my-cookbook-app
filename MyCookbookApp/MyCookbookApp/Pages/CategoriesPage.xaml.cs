@@ -1,6 +1,5 @@
 using MyCookbookApp.Models;
 using MyCookbookApp.ViewModels;
-using System.Collections.ObjectModel;
 
 namespace MyCookbookApp.Pages;
 
@@ -17,11 +16,6 @@ public partial class CategoriesPage : ContentPage
     }
 
     void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        var current = (e.CurrentSelection.FirstOrDefault() as Category).Name;
-
-        var page  = nameof(RecipesPage)+ "?categoryId="+ current;
-
-        Shell.Current.GoToAsync(page);
-    }
+        => Shell.Current.GoToAsync(nameof(RecipesPage) + "?categoryId=" + (e.CurrentSelection.FirstOrDefault() as Category).Name);
+    
 }

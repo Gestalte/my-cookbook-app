@@ -1,12 +1,5 @@
 ﻿using MyCookbookApp.Models;
-using MyCookbookApp.Pages;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyCookbookApp.ViewModels
 {
@@ -18,12 +11,14 @@ namespace MyCookbookApp.ViewModels
         {
             List<Category> categories = new List<Category>();
 
+            var random = new Random();
+
             for (int i = 0; i < 50; i++)
             {
                 categories.Add(new Category
                 {
                     Name = "Category " + (i + 1).ToString(),
-                    ImageUrl = "out.png"
+                    ImageUrl = "i"+random.Next(1, 6) + ".jpg"
                 });
             }
 

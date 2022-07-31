@@ -2,8 +2,94 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyCookbookApp.Pages.RecipeEditPage"
-             Title="RecipeEditPage">
-    <VerticalStackLayout>
-        <Entry x:Name="lblRecipeName"  Placeholder="Recipe Name"/>
-    </VerticalStackLayout>
+             Title="Recipe Add Page">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Entry x:Name="txtRecipeName"  Placeholder="Recipe Name"/>
+            <Entry x:Name="txtRecipeDescription"  Placeholder="Recipe Description"/>
+
+            <Grid ColumnDefinitions="*,*,Auto">
+                <Entry Grid.Column="0" x:Name="txtIngredientAmount"  Placeholder="Amount"/>
+                <Entry Grid.Column="1" x:Name="txtIngredient"  Placeholder="Ingredient"/>
+                <Button Grid.Column="2" x:Name="btnIngredientAdd" Text="Add"/>
+            </Grid>
+
+            <CollectionView 
+                ItemsSource="{Binding Ingredients}"
+                BackgroundColor="White">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Vertical"
+                        Span="1"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Black" BackgroundColor="White" Padding="5">
+                            <Grid ColumnDefinitions="Auto,*,2*,Auto">
+
+                                <CheckBox Grid.Column="0"/>
+
+                                <Label
+                                    Grid.Column="1"
+                                    Text="{Binding Amount}"
+                                    TextColor="Black"
+                                    HorizontalTextAlignment="Start" 
+                                    VerticalTextAlignment="Center"/>
+
+                                <Label
+                                    Grid.Column="2"
+                                    Text="{Binding Name}"
+                                    TextColor="Black"
+                                    HorizontalTextAlignment="Start"
+                                    VerticalTextAlignment="Center"/>
+
+                                <Button
+                                    Grid.Column="3"
+                                    Text="Remove"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Grid ColumnDefinitions="*,Auto">
+                <Entry Grid.Column="0" x:Name="txtStep"  Placeholder="Step discription"/>
+                <Button Grid.Column="1" x:Name="btnStepAdd" Text="Add"/>
+            </Grid>
+
+            <CollectionView 
+                ItemsSource="{Binding Steps}"
+                BackgroundColor="White">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Vertical"
+                        Span="1"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Black" BackgroundColor="White" Padding="5">
+                            <Grid ColumnDefinitions="*,Auto">
+
+                                <Label
+                                    Grid.Column="0"
+                                    Text="{Binding Description}"
+                                    TextColor="Black"
+                                    HorizontalTextAlignment="Start" 
+                                    VerticalTextAlignment="Center"/>
+
+                                <Button
+                                    Grid.Column="1"
+                                    Text="Remove"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button x:Name="btnSave" Text="Save"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

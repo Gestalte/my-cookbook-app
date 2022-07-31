@@ -1,21 +1,24 @@
+using MyCookbookApp.ViewModels;
+
 namespace MyCookbookApp.Pages;
 
 [QueryProperty(nameof(RecipeId), "recipeId")]
 public partial class RecipePage : ContentPage
 {
-	public RecipePage()
-	{
-		InitializeComponent();
-	}
+    public string RecipeId { get; set; }
 
-    private string recipeId;
-    public string RecipeId 
-	{ 
-		get => recipeId;
-		set
-		{
-            recipeId = value;
-            lblDisplay.Text = recipeId;
-        } 
-	}
+    public RecipePage()
+    {
+        InitializeComponent();
+
+        this.BindingContext = new RecipeViewModel();
+
+        var recipeViewModel = this.BindingContext as RecipeViewModel;
+
+        this.Title = recipeViewModel.Recipe.Name;
+
+        lblRecipeDescription.Text = recipeViewModel.Recipe.Description;
+
+        // TODO: Some kind of display adapter for adding numbers before the steps e.g. 1. <Step description>
+    }
 }

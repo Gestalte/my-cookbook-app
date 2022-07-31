@@ -3,11 +3,73 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyCookbookApp.Pages.RecipePage"
              Title="RecipePage">
-    <VerticalStackLayout>
-        <Label
-            x:Name="lblDisplay"
-            Text="RecipePage"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView Padding="5">
+        <VerticalStackLayout>
+            <!--<Label x:Name="lblRecipeName"  Text="Recipe Name" FontSize="Header"/>-->
+            <Label x:Name="lblRecipeDescription"  Text="Recipe Description" FontSize="Subtitle"/>
+
+            <Label Text="Ingredients" FontSize="Large"/>
+
+            <CollectionView Margin="10"
+                    Grid.Column="0" Grid.Row="0" MinimumHeightRequest="1"
+                    ItemsSource="{Binding Ingredients}"
+                    BackgroundColor="White">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Vertical"
+                        Span="1"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="Auto,*,2*" MinimumHeightRequest="35">
+
+                            <CheckBox Grid.Column="0"/>
+
+                            <Label
+                                Grid.Column="1"
+                                Text="{Binding Amount}"
+                                TextColor="Black"
+                                HorizontalTextAlignment="Start" 
+                                VerticalTextAlignment="Center"/>
+
+                            <Label
+                                Grid.Column="2"
+                                Text="{Binding Name}"
+                                TextColor="Black"
+                                HorizontalTextAlignment="Start"
+                                VerticalTextAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Text="Method" FontSize="Large"/>
+
+            <CollectionView 
+                    Grid.Column="0" Grid.Row="0" MinimumHeightRequest="1"
+                    ItemsSource="{Binding Steps}"
+                    BackgroundColor="White" Margin="10">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Vertical"
+                        Span="1"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*">
+                            <Label
+                                Grid.Column="0"
+                                Text="{Binding Description}"
+                                TextColor="Black"
+                                HorizontalTextAlignment="Start" 
+                                VerticalTextAlignment="Center"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

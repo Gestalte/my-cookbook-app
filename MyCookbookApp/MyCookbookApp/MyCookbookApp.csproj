@@ -39,7 +39,6 @@
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -49,10 +48,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\out.png" />
+	  <None Remove="Resources\Images\i1.jpg" />
+	  <None Remove="Resources\Images\i2.jpg" />
+	  <None Remove="Resources\Images\i3.jpg" />
+	  <None Remove="Resources\Images\i4.jpg" />
+	  <None Remove="Resources\Images\i5.jpg" />
+	  <None Remove="Resources\Images\i6.jpg" />
+	  <None Remove="Resources\Images\i7.jpg" />
+	  <None Remove="Resources\Images\i8.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Maui" Version="1.2.0" />
 	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 	  <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.0" />
 	</ItemGroup>
