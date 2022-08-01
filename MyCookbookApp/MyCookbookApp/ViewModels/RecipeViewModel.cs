@@ -1,5 +1,6 @@
 ﻿using MyCookbookApp.Models;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace MyCookbookApp.ViewModels
 {
@@ -11,11 +12,24 @@ namespace MyCookbookApp.ViewModels
 
         public RecipeViewModel()
         {
+            Recipe.ImageUrl = "i1.jpg";
             Recipe.Name = "Microwave Mielie pap";
             Recipe.Description = "Mielie pap made in the microwave.";
+            Recipe.Serves = "1";
+            Recipe.PreparationTime = "12min";
 
             Ingredients = SetupIngredients();
             Steps = SetupSteps();
+
+            RemoveIngredientCommand = new Command<Ingredient>(ingredient =>
+            {
+                Ingredients.Remove(ingredient);
+            });
+
+            RemoveStepCommand = new Command<Step>(step =>
+            {
+                Steps.Remove(step);
+            });
         }
 
         private ObservableCollection<Ingredient> SetupIngredients()
@@ -47,5 +61,9 @@ namespace MyCookbookApp.ViewModels
 
             return new ObservableCollection<Step>(steps);
         }
+
+        public Command<Ingredient> RemoveIngredientCommand { get; private set; }
+        public Command<Step> RemoveStepCommand { get; private set; }
+
     }
 }

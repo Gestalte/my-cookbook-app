@@ -17,8 +17,6 @@ public partial class RecipePage : ContentPage
 
         this.Title = recipeViewModel.Recipe.Name;
 
-        lblRecipeDescription.Text = recipeViewModel.Recipe.Description;
-
         // TODO: Some kind of display adapter for adding numbers before the steps e.g. 1. <Step description>
     }
 }

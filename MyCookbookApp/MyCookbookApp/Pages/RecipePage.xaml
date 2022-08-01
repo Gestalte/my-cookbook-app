@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyCookbookApp.Pages.RecipePage"
              Title="RecipePage">
+    
     <ScrollView Padding="5">
         <VerticalStackLayout>
-            <!--<Label x:Name="lblRecipeName"  Text="Recipe Name" FontSize="Header"/>-->
-            <Label x:Name="lblRecipeDescription"  Text="Recipe Description" FontSize="Subtitle"/>
+            
+            <Label x:Name="lblRecipeDescription" Text="Recipe Description" FontSize="Subtitle"/>
 
             <Label Text="Ingredients" FontSize="Large"/>
 
@@ -67,6 +68,7 @@
                                 TextColor="Black"
                                 HorizontalTextAlignment="Start" 
                                 VerticalTextAlignment="Center"/>
+                        </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
